@@ -1,0 +1,3 @@
+class Boarder < ApplicationRecord
+
+end
