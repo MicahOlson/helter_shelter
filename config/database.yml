@@ -23,13 +23,13 @@ default: &default
 
 development:
   <<: *default
-  database: animal_shelter_development
+  database: helter_shelter_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: animal_shelter
+  #username: helter_shelter
 
   # The password associated with the postgres role (username).
   #password:
@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: animal_shelter_test
+  database: helter_shelter_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: animal_shelter_production
-  username: animal_shelter
-  password: <%= ENV['ANIMAL_SHELTER_DATABASE_PASSWORD'] %>
+  database: helter_shelter_production
+  username: helter_shelter
+  password: <%= ENV['helter_shelter_DATABASE_PASSWORD'] %>
