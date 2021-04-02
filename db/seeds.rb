@@ -1,31 +1,45 @@
 class Seed
   def self.begin
     seed = Seed.new
+    Branch.destroy_all
     seed.generate_boarders
   end
-
+  
   def generate_boarders
-    15.times do |i|
-      boarder = Boarder.create!(
-        name: Faker::Creature::Cat.unique.name,
-        kind: "Cat",
-        breed: Faker::Creature::Cat.breed,
-        gender: Faker::Creature::Dog.gender,
-        age: rand(1..8),
-        description: Faker::Quote.unique.famous_last_words
-      )
+    locations = [
+      'North Portland',
+      'Northeast',
+      'Northwest',
+      'Southeast',
+      'Southwest'
+    ]
+    
+    locations.each do |location|
+      branch = Branch.create!(location: location)
+      rand(5..10).times do |i|
+        boarder = Boarder.create!(
+          name: Faker::Creature::Cat.name,
+          kind: "Cat",
+          breed: Faker::Creature::Cat.breed,
+          gender: Faker::Creature::Dog.gender,
+          age: rand(1..8),
+          description: Faker::Quote.famous_last_words,
+          branch_id: branch.id
+        )
+      end
+      rand(5..10).times do |i|
+        boarder = Boarder.create!(
+          name: Faker::Creature::Dog.name,
+          kind: "Dog",
+          breed: Faker::Creature::Dog.breed,
+          gender: Faker::Creature::Dog.gender,
+          age: rand(1..8),
+          description: Faker::Books::Dune.quote,
+          branch_id: branch.id
+        )
+      end
     end
-    10.times do |i|
-      boarder = Boarder.create!(
-        name: Faker::Creature::Dog.unique.name,
-        kind: "Dog",
-        breed: Faker::Creature::Dog.breed,
-        gender: Faker::Creature::Dog.gender,
-        age: rand(1..8),
-        description: Faker::Books::Dune.unique.quote
-      )
-    end
-    puts "Successfully created #{Boarder.count} boarders!"
+    puts "Successfully created #{Branch.count} branches with a total of #{Boarder.count} boarders!"
   end
 end
 
