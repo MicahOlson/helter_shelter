@@ -1,4 +1,4 @@
-class BoardersController < ApplicationController
+class Api::V1::BoardersController < ApplicationController
   def index
     branch = Branch.find(params[:branch_id])
     @boarders = branch.boarders

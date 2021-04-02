@@ -1,4 +1,4 @@
-class BranchesController < ApplicationController
+class Api::V1::BranchesController < ApplicationController
   def index
     @branches = Branch.all
     json_response(@branches)
