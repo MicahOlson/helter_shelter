@@ -1,13 +1,16 @@
 class BoardersController < ApplicationController
   def index
-    @boarders = Boarder.all
+    branch = Branch.find(params[:branch_id])
+    @boarders = branch.boarders
     json_response(@boarders)
   end
 
   def show
-    @branch = Branch.find(params[:branch_id])
+    branch = Branch.find(params[:branch_id])
     @boarder = Boarder.find(params[:id])
-    json_response(@boarder)
+    if @boarder.branch_id == branch.id
+      json_response(@boarder)
+    end
   end
 
   def create
