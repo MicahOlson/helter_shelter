@@ -5,6 +5,7 @@ class BoardersController < ApplicationController
   end
 
   def show
+    @branch = Branch.find(params[:branch_id])
     @boarder = Boarder.find(params[:id])
     json_response(@boarder)
   end
@@ -31,6 +32,6 @@ class BoardersController < ApplicationController
 
   private
   def boarder_params
-    params.permit(:name, :kind, :breed, :gender, :age, :description)
+    params.permit(:name, :kind, :breed, :gender, :age, :description, :branch_id)
   end
 end
