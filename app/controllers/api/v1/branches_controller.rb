@@ -1,4 +1,6 @@
 class Api::V1::BranchesController < ApplicationController
+  # swagger_controller :branches, "Branch Management"
+
   def index
     @branches = Branch.all
     json_response(@branches)
@@ -29,8 +31,16 @@ class Api::V1::BranchesController < ApplicationController
     end
   end
 
-  private
-  def branch_params
+  private def branch_params
     params.permit(:location)
   end
+
+  # #Swagger::Docs
+  # swagger_api :index do
+  #   summary "Fetches all Branches"
+  #   notes "This lists all branch locations"
+  #   param :query, :location, :string, :optional, "Location"
+  #   response :ok, "Success"
+  #   response :not_found
+  # end
 end

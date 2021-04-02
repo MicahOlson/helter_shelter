@@ -1,4 +1,6 @@
 class Api::V1::BoardersController < ApplicationController
+  # swagger_controller :boarders, "Boarder Management"
+
   def index
     branch = Branch.find(params[:branch_id])
     @boarders = branch.boarders
