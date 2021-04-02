@@ -10,18 +10,23 @@ class BoardersController < ApplicationController
   end
 
   def create
-    @boarder = Boarder.create(boarder_params)
-    json_response(@boarder)
+    @boarder = Boarder.create!(boarder_params)
+    json_response(@boarder, :created)
   end
 
   def update
     @boarder = Boarder.find(params[:id])
-    @boarder.update(boarder_params)
+    @boarder.update!(boarder_params)
+    json_response(@boarder, :accepted)
   end
 
   def destroy
     @boarder = Boarder.find(params[:id])
-    @boarder.destroy
+    if @boarder.destroy!
+      render status: 200, json: {
+       message: "Delete successful!"
+       }
+    end
   end
 
   private
