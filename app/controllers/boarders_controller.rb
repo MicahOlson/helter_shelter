@@ -25,10 +25,6 @@ class BoardersController < ApplicationController
   end
 
   private
-  def json_response(object, status = :ok)
-    render json: object, status: status
-  end
-
   def boarder_params
     params.permit(:name, :kind, :breed, :gender, :age, :description)
   end
