@@ -5,6 +5,43 @@
   "resourcePath": "boarders",
   "apis": [
     {
+      "path": "/api/v1/search",
+      "operations": [
+        {
+          "summary": "Fetches all boarders matching a provided breed",
+          "notes": "Input a Breed below and click 'try it out!' to fetch a list of all available pets of this breed.",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "q",
+              "type": "string",
+              "description": "Breed",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Success"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::Boarders#search",
+          "method": "get"
+        }
+      ]
+    },
+    {
       "path": "/api/v1/branches/{branch_id}/boarders",
       "operations": [
         {

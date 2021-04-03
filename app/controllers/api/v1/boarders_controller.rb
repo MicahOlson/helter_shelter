@@ -1,6 +1,17 @@
 class Api::V1::BoardersController < ApplicationController
   swagger_controller :boarders, "Boarder Management"
 
+  def search
+    @results = Boarder.search(params[:q])
+    if @results.any?
+      json_response(@results)
+    else
+      render status: 404, json: {
+        message: "No breeds match the query #{params[:q]}."
+      }
+    end
+  end
+
   def index
     branch = Branch.find(params[:branch_id])
     @boarders = branch.boarders
@@ -42,6 +53,15 @@ class Api::V1::BoardersController < ApplicationController
   end
 
   #Swagger::Docs
+  swagger_api :search do
+    summary "Fetches all boarders matching a provided breed"
+    notes "Input a Breed below and click 'try it out!' to fetch a list of all available pets of this breed."
+    param :query, :q, :string, :required, "Breed"
+    response :ok, "Success"
+    response :not_found
+    response :unprocessable_entity
+  end
+
   swagger_api :index do
     summary "Fetches all boarders at a branch"
     notes "Input a Branch ID number below and click 'try it out!' to fetch a list of all available pets at this location."
