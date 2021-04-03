@@ -10,15 +10,6 @@
         {
           "summary": "Fetches all branches",
           "notes": "This lists all branch locations",
-          "parameters": [
-            {
-              "paramType": "query",
-              "name": "location",
-              "type": "string",
-              "description": "Location name",
-              "required": false
-            }
-          ],
           "responseMessages": [
             {
               "code": 200,
@@ -47,20 +38,16 @@
         {
           "summary": "Creates a new branch",
           "notes": "This creates a new branch location",
-          "parameters": [
-            {
-              "paramType": "form",
-              "name": "location",
-              "type": "string",
-              "description": "Location name",
-              "required": false
-            }
-          ],
           "responseMessages": [
             {
               "code": 200,
               "responseModel": "Branch",
               "message": "Success"
+            },
+            {
+              "code": 201,
+              "responseModel": "Branch",
+              "message": "Created"
             },
             {
               "code": 404,
@@ -71,6 +58,15 @@
               "code": 422,
               "responseModel": null,
               "message": "Unprocessable Entity"
+            }
+          ],
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "location",
+              "type": "string",
+              "description": "Location name",
+              "required": true
             }
           ],
           "nickname": "Api::V1::Branches#create",
@@ -84,15 +80,6 @@
         {
           "summary": "Fetches a single branch",
           "notes": "This renders a single branch location by id",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "id",
-              "type": "integer",
-              "description": "Location Id",
-              "required": false
-            }
-          ],
           "responseMessages": [
             {
               "code": 200,
@@ -108,6 +95,15 @@
               "code": 422,
               "responseModel": null,
               "message": "Unprocessable Entity"
+            }
+          ],
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Location ID",
+              "required": true
             }
           ],
           "nickname": "Api::V1::Branches#show",
@@ -121,20 +117,16 @@
         {
           "summary": "Updates an existing branch",
           "notes": "This updates an existing branch location",
-          "parameters": [
-            {
-              "paramType": "form",
-              "name": "location",
-              "type": "string",
-              "description": "Location name",
-              "required": false
-            }
-          ],
           "responseMessages": [
             {
               "code": 200,
               "responseModel": "Branch",
               "message": "Success"
+            },
+            {
+              "code": 202,
+              "responseModel": "Branch",
+              "message": "Accepted"
             },
             {
               "code": 404,
@@ -145,6 +137,22 @@
               "code": 422,
               "responseModel": null,
               "message": "Unprocessable Entity"
+            }
+          ],
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Location ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "location",
+              "type": "string",
+              "description": "Location name",
+              "required": true
             }
           ],
           "nickname": "Api::V1::Branches#update",
@@ -157,16 +165,12 @@
       "operations": [
         {
           "summary": "Deletes an existing branch",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "id",
-              "type": "integer",
-              "description": "Location Id",
-              "required": false
-            }
-          ],
           "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": "Branch",
+              "message": "Delete successful"
+            },
             {
               "code": 404,
               "responseModel": null,
@@ -176,6 +180,15 @@
               "code": 422,
               "responseModel": null,
               "message": "Unprocessable Entity"
+            }
+          ],
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Location ID",
+              "required": true
             }
           ],
           "nickname": "Api::V1::Branches#destroy",
