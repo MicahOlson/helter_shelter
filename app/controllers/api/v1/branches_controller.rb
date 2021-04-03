@@ -1,5 +1,5 @@
 class Api::V1::BranchesController < ApplicationController
-  # swagger_controller :branches, "Branch Management"
+  swagger_controller :branches, "Branch Management"
 
   def index
     @branches = Branch.all
@@ -35,12 +35,48 @@ class Api::V1::BranchesController < ApplicationController
     params.permit(:location)
   end
 
-  # #Swagger::Docs
-  # swagger_api :index do
-  #   summary "Fetches all Branches"
-  #   notes "This lists all branch locations"
-  #   param :query, :location, :string, :optional, "Location"
-  #   response :ok, "Success"
-  #   response :not_found
-  # end
+  #Swagger::Docs
+  swagger_api :index do
+    summary "Fetches all branches"
+    notes "This lists all branch locations"
+    param :query, :location, :string, :optional, "Location name"
+    param :path, :id, :integer, :optional, "Location Id"
+    response :ok, "Success"
+    response :not_found
+    response :unprocessable_entity
+  end
+
+  swagger_api :show do
+    summary "Fetches a single branch"
+    notes "This renders a single branch location by id"
+    param :path, :id, :integer, :optional, "Location Id"
+    response :ok, "Success", :Branch
+    response :not_found
+    response :unprocessable_entity
+  end
+
+  swagger_api :create do
+    summary "Creates a new branch"
+    notes "This creates a new branch location"
+    param :form, :location, :string, :optional, "Location name"
+    response :ok, "Success", :Branch
+    response :not_found
+    response :unprocessable_entity
+  end
+
+  swagger_api :update do
+    summary "Updates an existing branch"
+    notes "This updates an existing branch location"
+    param :form, :location, :string, :optional, "Location name"
+    response :ok, "Success", :Branch
+    response :not_found
+    response :unprocessable_entity
+  end
+
+  swagger_api :destroy do
+    summary "Deletes an existing branch"
+    param :path, :id, :integer, :optional, "Location Id"
+    response :not_found
+    response :unprocessable_entity
+  end
 end

@@ -1,0 +1,188 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://localhost:3000",
+  "resourcePath": "branches",
+  "apis": [
+    {
+      "path": "/api/v1/branches",
+      "operations": [
+        {
+          "summary": "Fetches all branches",
+          "notes": "This lists all branch locations",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "location",
+              "type": "string",
+              "description": "Location name",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Success"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::Branches#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/branches",
+      "operations": [
+        {
+          "summary": "Creates a new branch",
+          "notes": "This creates a new branch location",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "location",
+              "type": "string",
+              "description": "Location name",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": "Branch",
+              "message": "Success"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::Branches#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/branches/{id}",
+      "operations": [
+        {
+          "summary": "Fetches a single branch",
+          "notes": "This renders a single branch location by id",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Location Id",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": "Branch",
+              "message": "Success"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::Branches#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/branches/{id}",
+      "operations": [
+        {
+          "summary": "Updates an existing branch",
+          "notes": "This updates an existing branch location",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "location",
+              "type": "string",
+              "description": "Location name",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": "Branch",
+              "message": "Success"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::Branches#update",
+          "method": "patch"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/branches/{id}",
+      "operations": [
+        {
+          "summary": "Deletes an existing branch",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Location Id",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::Branches#destroy",
+          "method": "delete"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}

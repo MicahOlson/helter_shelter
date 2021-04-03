@@ -1,3 +1,5 @@
+Swagger::Docs::Config.base_api_controller = ActionController::API
+
 Swagger::Docs::Config.register_apis({
   "1.0" => {
     # location where our api doc files will be generated, as of now we will store files under public directory
