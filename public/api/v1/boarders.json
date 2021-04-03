@@ -1,0 +1,309 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://localhost:3000",
+  "resourcePath": "boarders",
+  "apis": [
+    {
+      "path": "/api/v1/branches/{branch_id}/boarders",
+      "operations": [
+        {
+          "summary": "Fetches all boarders at a branch",
+          "notes": "Input a Branch ID number below and click 'try it out!' to fetch a list of all available pets at this location.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "branch_id",
+              "type": "integer",
+              "description": "Branch ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Success"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::Boarders#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/branches/{branch_id}/boarders",
+      "operations": [
+        {
+          "summary": "Creates a new boarder",
+          "notes": "Input the Branch ID where this pet will be boarded, along with its Name, Kind (Species), and Breed (all required). Optionally, you can include Gender, Age, and a Description, as well. Click 'try it out!' to create the new boarder.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "branch_id",
+              "type": "integer",
+              "description": "Branch ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "name",
+              "type": "string",
+              "description": "Boarder name",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "kind",
+              "type": "string",
+              "description": "Species",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "breed",
+              "type": "string",
+              "description": "Breed",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "gender",
+              "type": "string",
+              "description": "Gender",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "age",
+              "type": "string",
+              "description": "Age",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "description",
+              "type": "string",
+              "description": "Description",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Success"
+            },
+            {
+              "code": 201,
+              "responseModel": null,
+              "message": "Created"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::Boarders#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/branches/{branch_id}/boarders/{id}",
+      "operations": [
+        {
+          "summary": "Fetches a single boarder at a branch",
+          "notes": "Input the Branch and Boarder ID numbers below and click 'try it out!' to fetch a specific boarder.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "branch_id",
+              "type": "integer",
+              "description": "Branch ID",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Boarder ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Success"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::Boarders#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/branches/{branch_id}/boarders/{id}",
+      "operations": [
+        {
+          "summary": "Updates an existing boarder",
+          "notes": "Input Branch and Boarder ID numbers, and revisions to the boarder's details, and click 'try it out!' to update an existing boarder's record.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "branch_id",
+              "type": "integer",
+              "description": "Branch ID",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Boarder ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "name",
+              "type": "string",
+              "description": "Boarder name",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "kind",
+              "type": "string",
+              "description": "Species",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "breed",
+              "type": "string",
+              "description": "Breed",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "gender",
+              "type": "string",
+              "description": "Gender",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "age",
+              "type": "string",
+              "description": "Age",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "description",
+              "type": "string",
+              "description": "Description",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Success"
+            },
+            {
+              "code": 202,
+              "responseModel": null,
+              "message": "Accepted"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::Boarders#update",
+          "method": "patch"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/branches/{branch_id}/boarders/{id}",
+      "operations": [
+        {
+          "summary": "Deletes an existing boarder",
+          "notes": "Input the Branch and Boarder ID numbers below to fetch a specific boarder and click 'try it out!' to remove it from the database.",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "branch_id",
+              "type": "integer",
+              "description": "Branch ID",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Boarder ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Delete successful"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::Boarders#destroy",
+          "method": "delete"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}

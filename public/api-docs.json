@@ -4,6 +4,10 @@
   "basePath": "http://localhost:3000",
   "apis": [
     {
+      "path": "/api/v1/boarders.{format}",
+      "description": "Boarder Management"
+    },
+    {
       "path": "/api/v1/branches.{format}",
       "description": "Branch Management"
     }

@@ -16,8 +16,8 @@ Swagger::Docs::Config.register_apis({
     # :parent_controller => ApplicationController,
     :attributes => {
       :info => {
-        "title" => "Helter Shelter API",
-        "description" => "Get all available pets for adoption at Helter Shelters",
+        "title" => "Helter Shelter API v1",
+        "description" => "Make calls to the Helter Shelter database of adoptable pets. CORS enabled and full CRUD functionality available.",
         "contact" => "micah.olson@protonmail.com",
         "license" => "Apache 2.0",
         "licenseUrl" => "http://www.apache.org/licenses/LICENSE-2.0.html"
