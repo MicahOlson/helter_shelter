@@ -77,7 +77,7 @@ A back-end API providing records of all Helter Shelter branches in Portland, OR,
 
 * The following **database schema** is automatically created by the above command.
   <div>
-    <img src="public/images/db_schema.png" alt="A diagram of the database schema" width="30%">
+    <img src="public/images/db_schema.png" alt="A diagram of the database schema" width="40%">
   </div>
 
 * **Launch the local `Puma` web server** to start the API service.
@@ -98,20 +98,20 @@ A back-end API providing records of all Helter Shelter branches in Portland, OR,
 ### Endpoints
  Method |  URL (http://localhost:3000/..) | Required URL Params | Description
 | ---: | --- | --- | --- |
-| <span style="color:green">GET</span> | /api/v1/branches | _none_ | _Fetches all branches_ |
-| <span style="color:green">GET</span> | /api/v1/branches/:id | :id=[integer] | _Fetches a branch by id_ |
-| <span style="color:orange">POST</span> | /api/v1/branches | _none_ | _Creates a new branch_ |
-| <span style="color:yellow">PATCH</span> | /api/v1/branches/:id | :id=[integer] | _Updates a single branch by id_ |
-| <span style="color:red">DEL</span> | /api/v1/branches/:id | :id=[integer] | _Deletes a branch by its id_ |
-| <span style="color:green">GET</span> | /api/v1/branches/:id/boarders | branch :id=[integer] | _Fetches all boarders at a single branch_ |
-| <span style="color:green">GET</span> | /api/v1/branches/:id/boarders/:id | branch :id=[integer], boarder :id=[integer] | _Fetches a single boarder by id_ |
-| <span style="color:orange">POST</span> | /api/v1/branches/:id/boarders | branch :id=[integer] | _Creates a new boarder at a branch_     |
-| <span style="color:yellow">PATCH</span> | /api/v1/branches/:id/boarders/:id | branch :id=[integer], boarder :id=[integer] | _Updates a single boarder at a branch_ |
-| <span style="color:red">DEL</span> | /api/v1/branches/:id/boarders/:id | branch :id=[integer], boarder :id=[integer] | _Deletes a boarder at a branch_ |
+| GET | /api/v1/branches | _none_ | _Fetches all branches_ |
+| GET | /api/v1/branches/:id | :id=[integer] | _Fetches a branch by id_ |
+| POST | /api/v1/branches | _none_ | _Creates a new branch_ |
+| PATCH | /api/v1/branches/:id | :id=[integer] | _Updates a single branch by id_ |
+| DEL | /api/v1/branches/:id | :id=[integer] | _Deletes a branch by its id_ |
+| GET | /api/v1/branches/:id/boarders | branch :id=[integer] | _Fetches all boarders at a single branch_ |
+| GET | /api/v1/branches/:id/boarders/:id | branch :id=[integer], boarder :id=[integer] | _Fetches a single boarder by id_ |
+| POST | /api/v1/branches/:id/boarders | branch :id=[integer] | _Creates a new boarder at a branch_     |
+| PATCH | /api/v1/branches/:id/boarders/:id | branch :id=[integer], boarder :id=[integer] | _Updates a single boarder at a branch_ |
+| DEL | /api/v1/branches/:id/boarders/:id | branch :id=[integer], boarder :id=[integer] | _Deletes a boarder at a branch_ |
 ---
 
 ### Sample Calls
-<span style="color:green">GET</span> http://localhost:3000/api/v1/branches
+GET http://localhost:3000/api/v1/branches
 ```
   STATUS 200 OK
   [
@@ -129,7 +129,7 @@ A back-end API providing records of all Helter Shelter branches in Portland, OR,
     },
   ...
 ``` 
-<span style="color:green">GET</span> http://localhost:3000/api/v1/branches/86
+GET http://localhost:3000/api/v1/branches/86
 ```
   STATUS 200 OK
   {
@@ -139,7 +139,7 @@ A back-end API providing records of all Helter Shelter branches in Portland, OR,
       "updated_at": "2021-04-02T19:13:03.627Z"
   }
 ``` 
-<span style="color:green">GET</span> http://localhost:3000/api/v1/branches/86/boarders
+GET http://localhost:3000/api/v1/branches/86/boarders
 ```
   STATUS 200 OK
   [
@@ -160,7 +160,7 @@ A back-end API providing records of all Helter Shelter branches in Portland, OR,
         "name": "Daisy",
   ...
 ```
- <span style="color:green">GET</span> http://localhost:3000/api/v1/branches/86/boarders/1194
+ GET http://localhost:3000/api/v1/branches/86/boarders/1194
 ```
   STATUS 200 OK
   {
