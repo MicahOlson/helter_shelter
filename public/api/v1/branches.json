@@ -38,15 +38,6 @@
         {
           "summary": "Creates a new branch",
           "notes": "Input a Location name (required) and click 'try it out!' to create a new branch.",
-          "parameters": [
-            {
-              "paramType": "form",
-              "name": "location",
-              "type": "string",
-              "description": "Location name",
-              "required": true
-            }
-          ],
           "responseMessages": [
             {
               "code": 200,
@@ -69,6 +60,15 @@
               "message": "Unprocessable Entity"
             }
           ],
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "location",
+              "type": "string",
+              "description": "Location name",
+              "required": true
+            }
+          ],
           "nickname": "Api::V1::Branches#create",
           "method": "post"
         }
@@ -80,15 +80,6 @@
         {
           "summary": "Fetches a single branch",
           "notes": "Input a Branch ID number below and click 'try it out!' to fetch a specific location.",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "id",
-              "type": "integer",
-              "description": "Branch ID",
-              "required": true
-            }
-          ],
           "responseMessages": [
             {
               "code": 200,
@@ -106,6 +97,15 @@
               "message": "Unprocessable Entity"
             }
           ],
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Branch ID",
+              "required": true
+            }
+          ],
           "nickname": "Api::V1::Branches#show",
           "method": "get"
         }
@@ -117,22 +117,6 @@
         {
           "summary": "Updates an existing branch",
           "notes": "Input a Branch ID number and revisions to its Location name below, then click 'try it out!' to update the record.",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "id",
-              "type": "integer",
-              "description": "Branch ID",
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "location",
-              "type": "string",
-              "description": "Location name",
-              "required": true
-            }
-          ],
           "responseMessages": [
             {
               "code": 200,
@@ -155,6 +139,22 @@
               "message": "Unprocessable Entity"
             }
           ],
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Branch ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "location",
+              "type": "string",
+              "description": "Location name",
+              "required": true
+            }
+          ],
           "nickname": "Api::V1::Branches#update",
           "method": "patch"
         }
@@ -166,15 +166,6 @@
         {
           "summary": "Deletes an existing branch",
           "notes": "Input a Branch ID number below and click 'try it out!' to remove it from the database. Warning, this will delete all boarders at this branch, as well!",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "id",
-              "type": "integer",
-              "description": "Branch ID",
-              "required": true
-            }
-          ],
           "responseMessages": [
             {
               "code": 200,
@@ -190,6 +181,15 @@
               "code": 422,
               "responseModel": null,
               "message": "Unprocessable Entity"
+            }
+          ],
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Branch ID",
+              "required": true
             }
           ],
           "nickname": "Api::V1::Branches#destroy",

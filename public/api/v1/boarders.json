@@ -5,20 +5,11 @@
   "resourcePath": "boarders",
   "apis": [
     {
-      "path": "/api/v1/search",
+      "path": "/api/v1/branches/{branch_id}/boarders",
       "operations": [
         {
-          "summary": "Fetches all boarders matching a provided breed",
-          "notes": "Input a Breed below and click 'try it out!' to fetch a list of all available pets of this breed.",
-          "parameters": [
-            {
-              "paramType": "query",
-              "name": "q",
-              "type": "string",
-              "description": "Breed",
-              "required": false
-            }
-          ],
+          "summary": "Fetches all boarders at a branch",
+          "notes": "Input a Branch ID number below and click 'try it out!' to fetch a list of all available pets at this location.",
           "responseMessages": [
             {
               "code": 200,
@@ -36,17 +27,6 @@
               "message": "Unprocessable Entity"
             }
           ],
-          "nickname": "Api::V1::Boarders#search",
-          "method": "get"
-        }
-      ]
-    },
-    {
-      "path": "/api/v1/branches/{branch_id}/boarders",
-      "operations": [
-        {
-          "summary": "Fetches all boarders at a branch",
-          "notes": "Input a Branch ID number below and click 'try it out!' to fetch a list of all available pets at this location.",
           "parameters": [
             {
               "paramType": "path",
@@ -54,23 +34,6 @@
               "type": "integer",
               "description": "Branch ID",
               "required": true
-            }
-          ],
-          "responseMessages": [
-            {
-              "code": 200,
-              "responseModel": null,
-              "message": "Success"
-            },
-            {
-              "code": 404,
-              "responseModel": null,
-              "message": "Not Found"
-            },
-            {
-              "code": 422,
-              "responseModel": null,
-              "message": "Unprocessable Entity"
             }
           ],
           "nickname": "Api::V1::Boarders#index",
@@ -84,57 +47,6 @@
         {
           "summary": "Creates a new boarder",
           "notes": "Input the Branch ID where this pet will be boarded, along with its Name, Kind (Species), and Breed (all required). Optionally, you can include Gender, Age, and a Description, as well. Click 'try it out!' to create the new boarder.",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "branch_id",
-              "type": "integer",
-              "description": "Branch ID",
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "name",
-              "type": "string",
-              "description": "Boarder name",
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "kind",
-              "type": "string",
-              "description": "Species",
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "breed",
-              "type": "string",
-              "description": "Breed",
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "gender",
-              "type": "string",
-              "description": "Gender",
-              "required": false
-            },
-            {
-              "paramType": "form",
-              "name": "age",
-              "type": "string",
-              "description": "Age",
-              "required": false
-            },
-            {
-              "paramType": "form",
-              "name": "description",
-              "type": "string",
-              "description": "Description",
-              "required": false
-            }
-          ],
           "responseMessages": [
             {
               "code": 200,
@@ -157,6 +69,57 @@
               "message": "Unprocessable Entity"
             }
           ],
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "branch_id",
+              "type": "integer",
+              "description": "Branch ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "name",
+              "type": "string",
+              "description": "Boarder name",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "kind",
+              "type": "string",
+              "description": "Species",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "breed",
+              "type": "string",
+              "description": "Breed",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "gender",
+              "type": "string",
+              "description": "Gender",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "age",
+              "type": "string",
+              "description": "Age",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "description",
+              "type": "string",
+              "description": "Description",
+              "required": false
+            }
+          ],
           "nickname": "Api::V1::Boarders#create",
           "method": "post"
         }
@@ -168,22 +131,6 @@
         {
           "summary": "Fetches a single boarder at a branch",
           "notes": "Input the Branch and Boarder ID numbers below and click 'try it out!' to fetch a specific boarder.",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "branch_id",
-              "type": "integer",
-              "description": "Branch ID",
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "id",
-              "type": "integer",
-              "description": "Boarder ID",
-              "required": true
-            }
-          ],
           "responseMessages": [
             {
               "code": 200,
@@ -201,6 +148,22 @@
               "message": "Unprocessable Entity"
             }
           ],
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "branch_id",
+              "type": "integer",
+              "description": "Branch ID",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Boarder ID",
+              "required": true
+            }
+          ],
           "nickname": "Api::V1::Boarders#show",
           "method": "get"
         }
@@ -212,6 +175,28 @@
         {
           "summary": "Updates an existing boarder",
           "notes": "Input Branch and Boarder ID numbers, and revisions to the boarder's details, and click 'try it out!' to update an existing boarder's record.",
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Success"
+            },
+            {
+              "code": 202,
+              "responseModel": null,
+              "message": "Accepted"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
           "parameters": [
             {
               "paramType": "path",
@@ -270,28 +255,6 @@
               "required": false
             }
           ],
-          "responseMessages": [
-            {
-              "code": 200,
-              "responseModel": null,
-              "message": "Success"
-            },
-            {
-              "code": 202,
-              "responseModel": null,
-              "message": "Accepted"
-            },
-            {
-              "code": 404,
-              "responseModel": null,
-              "message": "Not Found"
-            },
-            {
-              "code": 422,
-              "responseModel": null,
-              "message": "Unprocessable Entity"
-            }
-          ],
           "nickname": "Api::V1::Boarders#update",
           "method": "patch"
         }
@@ -303,22 +266,6 @@
         {
           "summary": "Deletes an existing boarder",
           "notes": "Input the Branch and Boarder ID numbers below to fetch a specific boarder and click 'try it out!' to remove it from the database.",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "branch_id",
-              "type": "integer",
-              "description": "Branch ID",
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "id",
-              "type": "integer",
-              "description": "Boarder ID",
-              "required": true
-            }
-          ],
           "responseMessages": [
             {
               "code": 200,
@@ -336,8 +283,89 @@
               "message": "Unprocessable Entity"
             }
           ],
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "branch_id",
+              "type": "integer",
+              "description": "Branch ID",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Boarder ID",
+              "required": true
+            }
+          ],
           "nickname": "Api::V1::Boarders#destroy",
           "method": "delete"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/search",
+      "operations": [
+        {
+          "summary": "Search by breed, or return all boarders if blank.",
+          "notes": "Input a Breed below and click 'try it out!' to fetch a list of all available pets of this breed. Leave the query blank to simply return a list of all boarders across all branches.",
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Success"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "q",
+              "type": "string",
+              "description": "Breed",
+              "required": false
+            }
+          ],
+          "nickname": "Api::V1::Boarders#search",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/random",
+      "operations": [
+        {
+          "summary": "Fetches a random boarder at a random branch.",
+          "notes": "Click 'try it out!' below to fetch a random boarder from a random Helter Shelter location.",
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Success"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Api::V1::Boarders#random",
+          "method": "get"
         }
       ]
     }

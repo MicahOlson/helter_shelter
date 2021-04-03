@@ -1,6 +1,12 @@
 class Api::V1::BoardersController < ApplicationController
   swagger_controller :boarders, "Boarder Management"
 
+  def random
+    boarder_ids = Boarder.pluck(:id)
+    @boarder = Boarder.find(boarder_ids.sample)
+    json_response(@boarder)
+  end
+
   def search
     params[:q] ? (query = params[:q]) : (query = '')
     @results = Boarder.search(query)
@@ -52,10 +58,18 @@ class Api::V1::BoardersController < ApplicationController
   private def boarder_params
     params.permit(:name, :kind, :breed, :gender, :age, :description, :branch_id)
   end
-
+  
   #Swagger::Docs
+  swagger_api :random do
+    summary "Fetches a random boarder at a random branch."
+    notes "Click 'try it out!' below to fetch a random boarder from a random Helter Shelter location."
+    response :ok, "Success"
+    response :not_found
+    response :unprocessable_entity
+  end
+
   swagger_api :search do
-    summary "Fetches all boarders if query is blank, or by breed if supplied."
+    summary "Search by breed, or return all boarders if blank."
     notes "Input a Breed below and click 'try it out!' to fetch a list of all available pets of this breed. Leave the query blank to simply return a list of all boarders across all branches."
     param :query, :q, :string, :optional, "Breed"
     response :ok, "Success"
