@@ -16,7 +16,7 @@
               "name": "q",
               "type": "string",
               "description": "Breed",
-              "required": true
+              "required": false
             }
           ],
           "responseMessages": [

@@ -2,7 +2,8 @@ class Api::V1::BoardersController < ApplicationController
   swagger_controller :boarders, "Boarder Management"
 
   def search
-    @results = Boarder.search(params[:q])
+    params[:q] ? (query = params[:q]) : (query = '')
+    @results = Boarder.search(query)
     if @results.any?
       json_response(@results)
     else
@@ -54,9 +55,9 @@ class Api::V1::BoardersController < ApplicationController
 
   #Swagger::Docs
   swagger_api :search do
-    summary "Fetches all boarders matching a provided breed"
-    notes "Input a Breed below and click 'try it out!' to fetch a list of all available pets of this breed."
-    param :query, :q, :string, :required, "Breed"
+    summary "Fetches all boarders if query is blank, or by breed if supplied."
+    notes "Input a Breed below and click 'try it out!' to fetch a list of all available pets of this breed. Leave the query blank to simply return a list of all boarders across all branches."
+    param :query, :q, :string, :optional, "Breed"
     response :ok, "Success"
     response :not_found
     response :unprocessable_entity
