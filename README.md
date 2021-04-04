@@ -1,26 +1,40 @@
-# Helter Shelter API
-## _Hook in to PDX pets available for adoption_
+# Helter Shelter API (v1)
+## _A back-end Ruby on Rails API to connect people with adoptable pets._
 ### by: Micah L. Olson
 ### created: 4/2/2021
 
 ---
 
 ## Description
-A back-end API providing records of all Helter Shelter branches in Portland, OR, and the animals they each have available for adoption.
+This back-end `Ruby on Rails` API provides records of all *Helter Shelter* branches in the Portland, OR, metropolitan area, and the animals they each have available for adoption. **No API key** is required to use this service. It has been enabled for **CORS** and supplies full **CRUD** functionality.
+
+---
+
+## API Endpoints
+* The image below summarizes all available **endpoints**.  
+* For **comprehensive details** on each endpoint and usage examples, click here:  
+  [API Endpoints and Usage Examples](README-API.pdf)
+* Follow [*Installation and Setup*](#installation-and-setup) instructions below to locally interact with this API through a [`swagger`](http://swagger.io/) front-end.  
+  
+### Summary 
+![](./public/images/api_endpoints_summary.png)
 
 ---
 
 ## Technologies
 * Ruby
 * Rails
+* Bundler
+* Rake
 * PostgreSQL
 * Faker
 * Puma
 * Rack::Cors
-* Postman
 * RSpec
 * FactoryBot
-* Bundler
+* SimpleCov
+* Swagger::Docs
+* swagger-ui
 * git
 
 ---
@@ -72,7 +86,7 @@ A back-end API providing records of all Helter Shelter branches in Portland, OR,
 
 * **Recreate the databases** and **seed** a sample dataset.
   ```bash
-  $ rake db:setup
+  $ bundle exec rake db:setup
   ```
 
 * The following **database schema** is automatically created by the above command.
@@ -88,103 +102,16 @@ A back-end API providing records of all Helter Shelter branches in Portland, OR,
   * IMPORTANT! Be sure to **shut the web server down** when you are done using the app.  
     `control-c`
 
----
-
-## Helter Shelter API Usage
-* This API does not require authentication and has been enabled for **CORS** (cross-origin resource sharing).
-* Use `Postman` to make standalone calls to this API.  
-  ([download `Postman`](https://www.postman.com/downloads/))
-
-### Endpoints
- Method |  URL (http://localhost:3000/..) | Required URL Params | Description
-| ---: | --- | --- | --- |
-| GET | /api/v1/branches | _none_ | _Fetches all branches_ |
-| GET | /api/v1/branches/:id | :id=[integer] | _Fetches a branch by id_ |
-| POST | /api/v1/branches | _none_ | _Creates a new branch_ |
-| PATCH | /api/v1/branches/:id | :id=[integer] | _Updates a single branch by id_ |
-| DEL | /api/v1/branches/:id | :id=[integer] | _Deletes a branch by its id_ |
-| GET | /api/v1/branches/:id/boarders | branch :id=[integer] | _Fetches all boarders at a single branch_ |
-| GET | /api/v1/branches/:id/boarders/:id | branch :id=[integer], boarder :id=[integer] | _Fetches a single boarder by id_ |
-| POST | /api/v1/branches/:id/boarders | branch :id=[integer] | _Creates a new boarder at a branch_     |
-| PATCH | /api/v1/branches/:id/boarders/:id | branch :id=[integer], boarder :id=[integer] | _Updates a single boarder at a branch_ |
-| DEL | /api/v1/branches/:id/boarders/:id | branch :id=[integer], boarder :id=[integer] | _Deletes a boarder at a branch_ |
----
-
-### Sample Calls
-GET http://localhost:3000/api/v1/branches
-```
-  STATUS 200 OK
-  [
-    {
-        "id": 86,
-        "location": "North Portland",
-        "created_at": "2021-04-02T19:13:03.627Z",
-        "updated_at": "2021-04-02T19:13:03.627Z"
-    },
-    {
-        "id": 87,
-        "location": "Northeast",
-        "created_at": "2021-04-02T19:13:03.987Z",
-        "updated_at": "2021-04-02T19:13:03.987Z"
-    },
-  ...
-``` 
-GET http://localhost:3000/api/v1/branches/86
-```
-  STATUS 200 OK
-  {
-      "id": 86,
-      "location": "North Portland",
-      "created_at": "2021-04-02T19:13:03.627Z",
-      "updated_at": "2021-04-02T19:13:03.627Z"
-  }
-``` 
-GET http://localhost:3000/api/v1/branches/86/boarders
-```
-  STATUS 200 OK
-  [
-    {
-        "id": 1194,
-        "name": "Oliver",
-        "kind": "Cat",
-        "breed": "Aegean",
-        "gender": "Male",
-        "age": 2,
-        "description": "That's good. Go on, read some more.",
-        "created_at": "2021-04-02T19:13:03.941Z",
-        "updated_at": "2021-04-02T19:13:03.941Z",
-        "branch_id": 86
-    },
-    {
-        "id": 1195,
-        "name": "Daisy",
-  ...
-```
- GET http://localhost:3000/api/v1/branches/86/boarders/1194
-```
-  STATUS 200 OK
-  {
-    "id": 1194,
-    "name": "Oliver",
-    "kind": "Cat",
-    "breed": "Aegean",
-    "gender": "Male",
-    "age": 2,
-    "description": "That's good. Go on, read some more.",
-    "created_at": "2021-04-02T19:13:03.941Z",
-    "updated_at": "2021-04-02T19:13:03.941Z",
-    "branch_id": 86
-}
-```
+* Type **localhost:3000** into your browser's address bar and hit `enter`.
 
 ---
 
 ## Testing
-* This service was created following a **test-driven development** (TDD) process.
+* This service was created following a **test-driven development** (TDD) process, with **37 tests** covering **99.12%** of the code base.
 
-* ***Unit* and *integration* test suites** can be found in `spec/models` and `spec/features` respectively.
+* ***Unit* and *integration* test suites** can be found in `spec/models` and `spec/requests` respectively.
 
-* **Read the test specs** using `cat` (like below), or open the files in a code editor (see **Code Editors**).
+* **Read the test specs** using `cat` (ex. below), or open the files in a code editor (see [*Code Editors*](#code-editors)).
   ```bash
   $ cat spec/models/branch_spec.rb
   ```
