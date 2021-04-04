@@ -10,16 +10,15 @@ This back-end `Ruby on Rails` API provides records of all *Helter Shelter* branc
 
 ---
 
-## API Endpoints
-* The image below summarizes all available **endpoints**.
+## API Overview
+* The image below summarizes all 12 available **endpoints**, their URLs, and descriptions.
 
-* For **comprehensive details** on each endpoint and usage examples, click here:  
-  [API Endpoints and Usage Examples](README-API.pdf) (be patient, this page loads slowly)  
+* For **comprehensive details** of each endpoint, required and optional parameters, and request/response examples, see [*API Details*](#api-details).
 
-* Follow [*Installation and Setup*](#installation-and-setup) instructions below to locally interact with this API through a [`swagger`](http://swagger.io/) front-end.  
+* Follow the [*Installation and Setup*](#installation-and-setup) instructions to locally interact with this API through a [`swagger`](http://swagger.io/) front-end.
   
 ### Summary 
-![](./public/images/api_endpoints_summary.png)
+![](./public/images/swagger-ui-summary.png)
 
 ---
 
@@ -152,3 +151,10 @@ Micah L. Olson by
 <a href="mailto:micah.olson@protonmail.com" target="_blank">email</a> 
 or at 
 <a href="https://www.linkedin.com/in/micah-lewis-olson/" target="_blank">LinkedIn</a>.
+
+---
+
+## API Details
+![](./public/images/swagger-ui-full.png)  
+  
+[Back to Overview](#api-overview)
