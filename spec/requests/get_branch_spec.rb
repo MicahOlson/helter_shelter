@@ -12,7 +12,12 @@ RSpec.describe "get a branch route", type: :request do
     expect(JSON.parse(response.body)['location']).to eq('Portland')
   end
 
-  it 'returns status code 200' do
+  it 'returns status code 200 if successful' do
     expect(response).to have_http_status(:ok)
+  end
+
+  it 'returns status code 404 if not found' do
+    get api_v1_branch_path(0)
+    expect(response).to have_http_status(:not_found)
   end
 end

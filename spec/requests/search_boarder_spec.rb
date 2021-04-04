@@ -30,4 +30,10 @@ RSpec.describe "search boarders route", type: :request do
     get api_v1_search_path, params: {q: 'Manx'}
     expect(response).to have_http_status(:success)
   end
+
+  it 'returns status code 404 if no records are found' do
+    get api_v1_search_path, params: {q: 'Labrador'}
+    expect(response).to have_http_status(:not_found)
+    expect(JSON.parse(response.body)['message']).to eq("No breeds match the query Labrador.")
+  end
 end
