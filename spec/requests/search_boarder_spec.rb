@@ -11,8 +11,8 @@ RSpec.describe "search boarders route", type: :request do
                                name: 'Snowball',
                                kind: 'Cat',
                                breed: 'Maine Coon')
-                              end
-                              
+  end
+              
   it 'returns all boarders of a breed' do
     get api_v1_search_path, params: {q: 'Manx'}
     expect(JSON.parse(response.body).size).to eq(1)
