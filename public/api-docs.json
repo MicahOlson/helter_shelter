@@ -14,7 +14,7 @@
   ],
   "authorizations": null,
   "info": {
-    "title": "Helter Shelter API v1",
+    "title": "Helter Shelter API (v1)",
     "description": "Make calls to the Helter Shelter database of adoptable pets. No API key required, CORS enabled, and full CRUD functionality available.",
     "contact": "micah.olson@protonmail.com",
     "license": "Apache 2.0",

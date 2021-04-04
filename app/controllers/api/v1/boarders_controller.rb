@@ -61,7 +61,7 @@ class Api::V1::BoardersController < ApplicationController
   
   #Swagger::Docs
   swagger_api :random do
-    summary "Fetches a random boarder at a random branch."
+    summary "Fetches a random boarder at a random branch"
     notes "Click 'try it out!' below to fetch a random boarder from a random Helter Shelter location."
     response :ok, "Success"
     response :not_found
@@ -69,7 +69,7 @@ class Api::V1::BoardersController < ApplicationController
   end
 
   swagger_api :search do
-    summary "Search by breed, or return all boarders if blank."
+    summary "Searches by breed, or returns all boarders if blank"
     notes "Input a Breed below and click 'try it out!' to fetch a list of all available pets of this breed. Leave the query blank to simply return a list of all boarders across all branches."
     param :query, :q, :string, :optional, "Breed"
     response :ok, "Success"
@@ -117,9 +117,9 @@ class Api::V1::BoardersController < ApplicationController
     notes "Input Branch and Boarder ID numbers, and revisions to the boarder's details, and click 'try it out!' to update an existing boarder's record."
     param :path, :branch_id, :integer, :required, "Branch ID"
     param :path, :id, :integer, :required, "Boarder ID"
-    param :form, :name, :string, :required, "Boarder name"
-    param :form, :kind, :string, :required, "Species"
-    param :form, :breed, :string, :required, "Breed"
+    param :form, :name, :string, :optional, "Boarder name"
+    param :form, :kind, :string, :optional, "Species"
+    param :form, :breed, :string, :optional, "Breed"
     param :form, :gender, :string, :optional, "Gender"
     param :form, :age, :string, :optional, "Age"
     param :form, :description, :string, :optional, "Description"
