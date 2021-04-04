@@ -11,9 +11,11 @@ This back-end `Ruby on Rails` API provides records of all *Helter Shelter* branc
 ---
 
 ## API Endpoints
-* The image below summarizes all available **endpoints**.  
+* The image below summarizes all available **endpoints**.
+
 * For **comprehensive details** on each endpoint and usage examples, click here:  
-  [API Endpoints and Usage Examples](README-API.pdf)
+  [API Endpoints and Usage Examples](README-API.pdf) (be patient, this page loads slowly)  
+
 * Follow [*Installation and Setup*](#installation-and-setup) instructions below to locally interact with this API through a [`swagger`](http://swagger.io/) front-end.  
   
 ### Summary 
@@ -107,7 +109,8 @@ This back-end `Ruby on Rails` API provides records of all *Helter Shelter* branc
 ---
 
 ## Testing
-* This service was created following a **test-driven development** (TDD) process, with **37 tests** covering **99.12%** of the code base.
+* This service was created following a **test-driven development** (TDD) process.
+  * **37 tests** covering **99.12%** of the code base.
 
 * ***Unit* and *integration* test suites** can be found in `spec/models` and `spec/requests` respectively.
 
