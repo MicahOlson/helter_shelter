@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "post a boarder route", type: :request do
   before do
     @branch = Branch.create(location: 'Portland')
-    post api_v1_branch_boarders_path(@branch.id), params: {branch_id: "#{@branch.id}",
+    post api_v1_branch_boarders_path(@branch.id), params: {branch_id: @branch.id,
                                                            name: 'Fluffy',
                                                            kind: 'Cat',
                                                            breed: 'Manx'}

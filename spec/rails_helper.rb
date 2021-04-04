@@ -38,6 +38,8 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
+  
+  # See https://medium.com/@amliving/my-rails-rspec-set-up-6451269847f9
   config.use_transactional_fixtures = false
 
   config.before(:suite) do
